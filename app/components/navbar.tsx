@@ -7,13 +7,45 @@ import Link from 'next/link'
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [time, setTime] = useState(new Date())
+  const [temperature, setTemperature] = useState(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0)
     }
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    window.addEventListener('resize', handleResize)
+    handleResize()
+
+    // Time update
+    const timer = setInterval(() => {
+      setTime(new Date())
+    }, 1000)
+
+    // Temperature fetch
+    const fetchTemperature = async () => {
+      try {
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=19.0760&lon=72.8777&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`)
+        const data = await res.json()
+        console.log('Weather data:', data);
+        setTemperature(data.main.temp)
+      } catch (error) {
+        console.log('Weather fetch error:', error)
+      }
+    }    
+    fetchTemperature()
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+      clearInterval(timer)
+    }
   }, [])
 
   const navItems = [
@@ -25,28 +57,40 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-gray-900/80 backdrop-blur-md shadow-lg' 
-        : 'bg-transparent'
+      isScrolled ? 'bg-gray-900/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex items-center space-x-2"
-          >
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-sm text-emerald-400 mr-2"
-            >
-
-            </motion.span>
-            
+          {/* Logo */}
+          <motion.div className="flex items-center space-x-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-emerald-500 to-green-500 flex items-center justify-center text-white font-bold text-xl">
               RJ
             </div>
+          </motion.div>
+
+          {/* Time and Temperature */}
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className={`flex items-center space-x-6 text-white ${isMobile ? 'absolute left-1/2 transform -translate-x-1/2' : 'hidden md:flex'}`}
+          >
+            <motion.div 
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700"
+            >
+              {time.toLocaleTimeString()}
+            </motion.div>
+            {temperature && (
+              <motion.div 
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700"
+              >
+                {Math.round(temperature)}°C Mumbai
+              </motion.div>
+            )}
           </motion.div>
 
           <div className="hidden md:block">
