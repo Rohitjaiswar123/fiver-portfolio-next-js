@@ -1,11 +1,13 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 export default function Projects() {
   const [selectedTech, setSelectedTech] = useState<string>('all')
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
   const projects = [
     {
@@ -42,18 +44,24 @@ export default function Projects() {
     : projects.filter(project => project.tech.includes(selectedTech))
 
   return (
-    <section id="projects" className="relative py-20 bg-gradient-to-r from-black via-gray-900 to-black min-h-screen">
+    <section ref={sectionRef} id="projects" className="relative py-20 bg-gradient-to-r from-black via-gray-900 to-black min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: -50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+          transition={{ duration: 4.8, type: "spring", bounce: 0.3, damping: 20 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-white mb-4">Projects</h2>
           <div className="w-24 h-1 bg-emerald-500 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: -50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+          transition={{ duration: 4.8, delay: 0.2, type: "spring", bounce: 0.3, damping: 20 }}
+          className="flex flex-wrap justify-center gap-4 mb-12"
+        >
           <button
             onClick={() => setSelectedTech('all')}
             className={`px-4 py-2 rounded-full transition-colors ${
@@ -77,16 +85,21 @@ export default function Projects() {
               {tech}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
+              initial={{ opacity: 0, y: -50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
+              transition={{ 
+                duration: 14.8, 
+                delay: 0.7 + index * 0.1,
+                type: "spring",
+                bounce: 0.3,
+                damping: 20
+              }}
               className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden"
             >
               <div className="relative h-48">

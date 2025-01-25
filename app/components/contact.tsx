@@ -1,7 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { useState, useRef } from 'react'
 import { FaGithub, FaGitlab, FaLinkedin } from 'react-icons/fa'
 import { SiUpwork } from 'react-icons/si'
 
@@ -11,6 +11,9 @@ export default function Contact() {
     email: '',
     message: ''
   })
+  
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
   const socialLinks = [
     {
@@ -41,12 +44,13 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
+    <section ref={sectionRef} id="contact" className="relative py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900">
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/10 to-transparent opacity-50" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 100 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+          transition={{ duration: 4.8, type: "spring", bounce: 0.3, damping: 20 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
@@ -55,8 +59,9 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 100 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+            transition={{ duration: 4.8, delay: 0.2, type: "spring", bounce: 0.3, damping: 20 }}
             className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-gray-700"
           >
             <h3 className="text-2xl font-semibold text-white mb-6">Send Message</h3>
@@ -123,13 +128,21 @@ export default function Contact() {
               >
                 Send Message
               </motion.button>
-            </form>          </motion.div>
+            </form>
+          </motion.div>
+
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 100 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+            transition={{ duration: 4.8, delay: 0.4, type: "spring", bounce: 0.3, damping: 20 }}
             className="space-y-8"
           >
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-gray-700">
+            <motion.div 
+              initial={{ opacity: 0, y: 100 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 4.8, delay: 0.6, type: "spring", bounce: 0.3, damping: 20 }}
+              className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-gray-700"
+            >
               <h3 className="text-2xl font-semibold text-white mb-6">Connect With Me</h3>
               <div className="grid grid-cols-2 gap-6">
                 {socialLinks.map((social) => (
@@ -149,16 +162,21 @@ export default function Contact() {
                   </motion.a>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-gray-700">
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              transition={{ duration: 4.8, delay: 0.8, type: "spring", bounce: 0.3, damping: 20 }}
+              className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-gray-700"
+            >
               <h3 className="text-2xl font-semibold text-white mb-4">Contact Information</h3>
               <div className="space-y-4 text-gray-300">
                 <p>Email: rohit.s.jaiswar@gmail.com</p>
                 <p>Location: Mumbai, India</p>
                 <p>Available for: Freelance, Full-time opportunities</p>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

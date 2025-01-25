@@ -1,9 +1,13 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
+import { useRef } from 'react'
 
 export default function About() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+
   const skills = [
     { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
     { category: 'Backend', items: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL'] },
@@ -24,8 +28,9 @@ export default function About() {
       description: 'Built and maintained multiple client projects using React and Node.js.'
     }
   ]
+
   return (
-    <section id="about" className="relative py-20 overflow-hidden bg-gradient-to-r from-zinc-900 via-zinc-800 to-emerald-800/40">
+    <section ref={sectionRef} id="about" className="relative py-20 overflow-hidden bg-gradient-to-r from-zinc-900 via-zinc-800 to-emerald-800/40">
       <div className="absolute inset-0 overflow-hidden">
         <div 
           className="absolute w-[200%] h-[200%] top-[-50%] left-[-50%]
@@ -51,26 +56,36 @@ export default function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, x: -100 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+            transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
           >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-green-500 rounded-lg transform rotate-6 scale-105 opacity-20"></div>
               <Image
-                src="/profile.jpg"
+                src="/projects/about1.webp"
                 alt="Rohit Jaiswar"
                 width={500}
                 height={500}
                 className="rounded-lg relative z-10"
+                priority
+
+                loading="eager"
+                quality={100}
               />
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, x: 100 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+            transition={{ 
+              duration: 14.8,
+              delay: 0.4,
+              type: "spring", 
+              bounce: 0.3,
+              damping: 20
+            }}
             className="space-y-6"
           >
             <h3 className="text-2xl font-semibold text-white">
