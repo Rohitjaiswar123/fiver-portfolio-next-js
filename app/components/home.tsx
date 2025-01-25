@@ -19,7 +19,7 @@ export default function Home() {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full -z-10 blur-2xl opacity-20" />
           <Image
-            src="/your-photo.jpg"
+            src="/projects/home.jpg"
             alt="Rohit Jaiswar"
             width={384}
             height={384}
