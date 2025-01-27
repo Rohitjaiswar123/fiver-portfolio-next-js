@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Navbar from "./navbar";
+
 import AnimatedCursor from "./AnimatedCursor";
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
         />
       </div>
       <AnimatedCursor />
-      <Navbar />
+
       <section className="relative z-10 flex flex-col md:flex-row items-center justify-center min-h-[90vh] px-6 gap-12 max-w-7xl mx-auto pt-16">
         <motion.div
           initial={{ opacity: 0, x: -50 }}

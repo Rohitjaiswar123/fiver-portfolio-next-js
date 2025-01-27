@@ -37,7 +37,7 @@ export default function AnimatedCursor() {
       x: mousePosition.x - 24,
       y: mousePosition.y - 24,
       scale: 2,
-      backgroundColor: "rgba(255, 255, 255, 0.2)",
+      backgroundColor: "rgba(17, 24, 39, 0.7)", // Dark gray/midnight color
       mixBlendMode: "difference",
       transition: {
         type: "spring",
