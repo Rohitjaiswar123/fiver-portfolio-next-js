@@ -7,11 +7,14 @@ import Link from 'next/link'
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [time, setTime] = useState(new Date())
-  const [temperature, setTemperature] = useState(null)
+  const [time, setTime] = useState('')
+  const [temperature, setTemperature] = useState<number | null>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0)
     }
@@ -25,7 +28,7 @@ export default function Navbar() {
 
     // Time update
     const timer = setInterval(() => {
-      setTime(new Date())
+      setTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' , second: '2-digit' }))
     }, 1000)
 
     // Temperature fetch
@@ -33,7 +36,6 @@ export default function Navbar() {
       try {
         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=19.0760&lon=72.8777&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`)
         const data = await res.json()
-        console.log('Weather data:', data);
         setTemperature(data.main.temp)
       } catch (error) {
         console.log('Weather fetch error:', error)
@@ -69,29 +71,31 @@ export default function Navbar() {
           </motion.div>
 
           {/* Time and Temperature */}
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className={`flex items-center space-x-6 text-white ${isMobile ? 'absolute left-1/2 transform -translate-x-1/2' : 'hidden md:flex'}`}
-          >
+          {isClient && (
             <motion.div 
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className={`flex items-center space-x-6 text-white ${isMobile ? 'absolute left-1/2 transform -translate-x-1/2' : 'hidden md:flex'}`}
             >
-              {time.toLocaleTimeString()}
-            </motion.div>
-            {temperature && (
               <motion.div 
                 animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                transition={{ duration: 2, repeat: Infinity }}
                 className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700"
               >
-                {Math.round(temperature)}°C Mumbai
+                {time}
               </motion.div>
-            )}
-          </motion.div>
+              {temperature && (
+                <motion.div 
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                  className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700"
+                >
+                  {Math.round(temperature)}°C Mumbai
+                </motion.div>
+              )}
+            </motion.div>
+          )}
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-center text-xl space-x-8">

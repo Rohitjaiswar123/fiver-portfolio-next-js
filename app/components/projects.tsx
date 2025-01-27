@@ -7,7 +7,7 @@ import { useState, useRef } from 'react'
 export default function Projects() {
   const [selectedTech, setSelectedTech] = useState<string>('all')
   const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' })
 
   const projects = [
     {
@@ -16,7 +16,7 @@ export default function Projects() {
       image: '/projects/ecommerce.jpg',
       tech: ['React', 'Next.js', 'TypeScript', 'Node.js'],
       demo: 'https://demo.example.com',
-      github: 'https://github.com/example/project'
+      github: 'https://github.com/example/project',
     },
     {
       title: 'AI Chat Application',
@@ -24,49 +24,64 @@ export default function Projects() {
       image: '/projects/chat.jpg',
       tech: ['Python', 'AWS', 'TensorFlow', 'MongoDB'],
       demo: 'https://demo.example.com',
-      github: 'https://github.com/example/project'
+      github: 'https://github.com/example/project',
     },
     {
       title: 'Portfolio Website',
       description: 'Modern portfolio website with dark theme and smooth animations.',
       image: '/projects/portfolio.jpg',
-      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Java'],
+      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', ],
       demo: 'https://demo.example.com',
-      github: 'https://github.com/example/project'
-    }
+      github: 'https://github.com/example/project',
+    },
   ]
-  const allTechnologies = Array.from(
-    new Set(projects.flatMap(project => project.tech))
-  )
+
+  const allTechnologies = Array.from(new Set(projects.flatMap((project) => project.tech)))
 
   const filteredProjects = selectedTech === 'all'
     ? projects
-    : projects.filter(project => project.tech.includes(selectedTech))
+    : projects.filter((project) => project.tech.includes(selectedTech))
 
   return (
-    <section ref={sectionRef} id="projects" className="relative py-20 bg-gradient-to-r from-black via-gray-900 to-black min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="relative py-20 bg-gradient-to-r from-black via-gray-900 to-black min-h-screen overflow-hidden"
+    >
+      {/* Background Animation */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-t from-emerald-600/10 via-transparent to-transparent blur-3xl opacity-30"
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.7, 0.8, 0.7],
+        }}
+        transition={{ repeat: Infinity, duration: 8 }}
+      ></motion.div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
-          transition={{ duration: 4.8, type: "spring", bounce: 0.3, damping: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, type: 'spring', bounce: 0.4 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-white mb-4">Projects</h2>
-          <div className="w-24 h-1 bg-emerald-500 mx-auto rounded-full"></div>
+          <p className="text-gray-400">Showcasing my best work and favorite technologies.</p>
+          <div className="w-24 h-1 bg-emerald-500 mx-auto rounded-full mt-4"></div>
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: -50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
-          transition={{ duration: 4.8, delay: 0.2, type: "spring", bounce: 0.3, damping: 20 }}
+        {/* Filter Buttons */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.2, duration: 0.8 }}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
           <button
             onClick={() => setSelectedTech('all')}
-            className={`px-4 py-2 rounded-full transition-colors ${
+            className={`px-4 py-2 rounded-full transition-transform transform ${
               selectedTech === 'all'
-                ? 'bg-emerald-500 text-white'
+                ? 'bg-emerald-500 text-white shadow-lg scale-105'
                 : 'bg-white/10 text-white hover:bg-white/20'
             }`}
           >
@@ -76,9 +91,9 @@ export default function Projects() {
             <button
               key={tech}
               onClick={() => setSelectedTech(tech)}
-              className={`px-4 py-2 rounded-full transition-colors ${
+              className={`px-4 py-2 rounded-full transition-transform transform ${
                 selectedTech === tech
-                  ? 'bg-emerald-500 text-white'
+                  ? 'bg-emerald-500 text-white shadow-lg scale-105'
                   : 'bg-white/10 text-white hover:bg-white/20'
               }`}
             >
@@ -87,27 +102,27 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Projects */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: -50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
-              transition={{ 
-                duration: 14.8, 
-                delay: 0.7 + index * 0.1,
-                type: "spring",
-                bounce: 0.3,
-                damping: 20
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{
+                duration: 0.8,
+                delay: 0.3 + index * 0.1,
+                type: 'spring',
+                bounce: 0.4,
               }}
-              className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden"
+              className="bg-white/10 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105"
             >
               <div className="relative h-48">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform transform hover:scale-110"
                   loading="lazy"
                 />
               </div>
@@ -118,7 +133,7 @@ export default function Projects() {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 text-sm bg-emerald-500/10 text-emerald-400 rounded-full"
+                      className="px-3 py-1 text-sm bg-gradient-to-r from-emerald-500 to-green-400 text-black rounded-full shadow-md"
                     >
                       {tech}
                     </span>
@@ -129,7 +144,7 @@ export default function Projects() {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-emerald-500 text-white rounded-full hover:bg-emerald-600 transition-colors"
+                    className="px-4 py-2 bg-emerald-500 text-white rounded-full hover:bg-emerald-600 transition-transform transform hover:scale-105"
                   >
                     Live Demo
                   </a>
@@ -137,7 +152,7 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 border border-white/20 text-white rounded-full hover:bg-white/10 transition-colors"
+                    className="px-4 py-2 border border-white/20 text-white rounded-full hover:bg-white/10 transition-transform transform hover:scale-105"
                   >
                     GitHub
                   </a>
