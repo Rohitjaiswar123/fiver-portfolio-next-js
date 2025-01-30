@@ -96,21 +96,20 @@ export default function Navbar() {
               )}
             </motion.div>
           )}
-
           <div className="hidden md:block">
             <div className="ml-10 flex items-center text-xl space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-white hover:text-emerald-400 transition-colors"
+                  className="nav-link text-white hover:text-gray-900 relative group z-50 transition-colors duration-300"
                 >
-                  {item.name}
+                  <span className="relative z-50 mix-blend-normal">{item.name}</span>
+                  <span className="absolute inset-0 bg-white/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </Link>
               ))}
             </div>
           </div>
-
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}

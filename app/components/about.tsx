@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useRef } from 'react'
 import { FaReact, FaNodeJs, FaDatabase, FaAws, FaDocker } from 'react-icons/fa'
 import { SiTailwindcss, SiPostgresql, SiMongodb } from 'react-icons/si'
+import AnimatedCursor from './AnimatedCursor'
 
 export default function About() {
   const sectionRef = useRef(null)
@@ -36,9 +37,11 @@ export default function About() {
   ]
 
   return (
-    <section ref={sectionRef} id="about" className="relative py-20 bg-gradient-to-br from-zinc-900 via-zinc-800 to-emerald-800/40 overflow-hidden">
-      {/* Decorative Background */}
-      <div className="absolute inset-0">
+    <>
+      <AnimatedCursor />
+      <section ref={sectionRef} id="about" className="relative py-20 bg-gradient-to-br from-zinc-900 via-zinc-800 to-emerald-800/40 overflow-hidden">
+        {/* Decorative Background */}
+        <div className="absolute inset-0">
         <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-gradient-to-br from-zinc-300/10 via-emerald-500/10 to-transparent transform rotate-45 motion-safe:animate-pulse opacity-20 pointer-events-none"></div>
       </div>
 
@@ -137,5 +140,6 @@ export default function About() {
         </div>
       </div>
     </section>
+    </>
   )
 }
