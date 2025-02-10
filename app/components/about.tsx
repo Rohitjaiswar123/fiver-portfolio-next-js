@@ -3,9 +3,8 @@
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
-import { FaReact, FaNodeJs, FaDatabase, FaAws, FaDocker } from 'react-icons/fa'
+import { FaReact, FaNodeJs,  FaAws, FaDocker } from 'react-icons/fa'
 import { SiTailwindcss, SiPostgresql, SiMongodb } from 'react-icons/si'
-import AnimatedCursor from './AnimatedCursor'
 
 export default function About() {
   const sectionRef = useRef(null)
@@ -37,11 +36,9 @@ export default function About() {
   ]
 
   return (
-    <>
-      <AnimatedCursor />
-      <section ref={sectionRef} id="about" className="relative py-20 bg-gradient-to-br from-zinc-900 via-zinc-800 to-emerald-800/40 overflow-hidden">
-        {/* Decorative Background */}
-        <div className="absolute inset-0">
+    <section ref={sectionRef} id="about" className="relative py-20 bg-gradient-to-br from-zinc-900 via-zinc-800 to-emerald-800/40 overflow-hidden">
+      {/* Decorative Background */}
+      <div className="absolute inset-0">
         <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-gradient-to-br from-zinc-300/10 via-emerald-500/10 to-transparent transform rotate-45 motion-safe:animate-pulse opacity-20 pointer-events-none"></div>
       </div>
 
@@ -87,9 +84,9 @@ export default function About() {
             transition={{ duration: 0.8, type: 'spring', bounce: 0.4 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-semibold text-white">Hi, I'm Rohit Jaiswar</h3>
-            <p className="text-gray-300 leading-relaxed">
-              A passionate Full Stack Developer with over 5 years of experience in building digital solutions. I specialize in creating responsive and scalable web applications using modern technologies. My approach combines technical expertise with creative problem-solving to deliver exceptional user experiences.
+            {/* <h3 className="text-2xl font-semibold text-white">Hi, I'm Rohit Jaiswar</h3> */}
+            <p className="text-gray-300 text-lg leading-relaxed">
+              A passionate Full Stack Developer with over 6 months of experience in building digital solutions. I specialize in creating responsive and scalable web applications using modern technologies. My approach combines technical expertise with creative problem-solving to deliver exceptional user experiences.
             </p>
 
             {/* Skills Section */}
@@ -102,7 +99,7 @@ export default function About() {
                     <div className="flex-1">
                       <div className="flex justify-between">
                         <span className="text-gray-100">{skill.name}</span>
-                        <span className="text-gray-300">{skill.level}%</span>
+                        {/* <span className="text-gray-300">{skill.level}%</span> */}
                       </div>
                       <div className="w-full h-2 bg-zinc-700 rounded-full mt-1">
                         <div
@@ -140,6 +137,5 @@ export default function About() {
         </div>
       </div>
     </section>
-    </>
   )
 }

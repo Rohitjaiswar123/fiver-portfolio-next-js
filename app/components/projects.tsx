@@ -32,7 +32,7 @@ export default function Projects() {
       image: '/projects/portfolio.jpg',
       tech: ['Next.js', 'TypeScript', 'Tailwind CSS', ],
       demo: 'https://demo.example.com',
-      github: 'https://github.com/example/project',
+      github: 'https://github.com/Rohitjaiswar123/fiver-portfolio-next-js',
     },
   ]
 

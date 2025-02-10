@@ -19,12 +19,12 @@ export default function Contact() {
     {
       name: 'LinkedIn',
       icon: <FaLinkedin className="w-6 h-6" />,
-      url: 'https://linkedin.com/in/yourprofile'
+      url: 'https://www.linkedin.com/in/rohit-jaiswar-313a60230/'
     },
     {
-      name: 'GitHub',
+      name: 'GitHub', 
       icon: <FaGithub className="w-6 h-6" />,
-      url: 'https://github.com/yourprofile'
+      url: 'https://github.com/Rohitjaiswar123'
     },
     {
       name: 'Upwork',
@@ -32,15 +32,37 @@ export default function Contact() {
       url: 'https://upwork.com/yourprofile'
     },
     {
-        name: 'GitLab',
-        icon: <FaGitlab className="w-6 h-6" />,
-        url: 'https://gitlab.com/yourprofile'
-      }
+      name: 'GitLab',
+      icon: <FaGitlab className="w-6 h-6" />,
+      url: 'https://gitlab.com/Rohitjaiswar123'
+    }
   ]
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log(formData)
+    
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        // Clear form
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        })
+        alert('Message sent successfully!')
+      } else {
+        throw new Error('Failed to send message')
+      }
+    } catch (error) {
+      alert('Error sending message. Please try again.')
+    }
   }
 
   return (

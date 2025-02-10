@@ -56,13 +56,12 @@ export default function Navbar() {
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' }
   ]
-
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-gray-900/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 relative">
           {/* Logo */}
           <motion.div className="flex items-center space-x-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-emerald-500 to-green-500 flex items-center justify-center text-white font-bold text-xl">
@@ -70,18 +69,13 @@ export default function Navbar() {
             </div>
           </motion.div>
 
-          {/* Time and Temperature */}
+          {/* Centered Time and Temperature */}
           {isClient && (
-            <motion.div 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className={`flex items-center space-x-6 text-white ${isMobile ? 'absolute left-1/2 transform -translate-x-1/2' : 'hidden md:flex'}`}
-            >
+            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-4">
               <motion.div 
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700"
+                className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 text-base  sm:text-lg rounded-lg border border-gray-700  text-white"
               >
                 {time}
               </motion.div>
@@ -89,15 +83,17 @@ export default function Navbar() {
                 <motion.div 
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                  className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700"
+                  className="bg-gray-800/50 backdrop-blur-sm px-4 py-2 text-base sm:text-lg rounded-lg border border-gray-700 text-white  whitespace-nowrap"
                 >
                   {Math.round(temperature)}°C Mumbai
                 </motion.div>
               )}
-            </motion.div>
+            </div>
           )}
+
+          {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-center text-xl space-x-8">
+            <div className="flex items-center text-xl space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -110,6 +106,8 @@ export default function Navbar() {
               ))}
             </div>
           </div>
+
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -128,7 +126,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
+      {/* Mobile Menu */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}

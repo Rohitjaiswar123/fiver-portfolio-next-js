@@ -37,7 +37,7 @@ export default function AnimatedCursor() {
       x: mousePosition.x - 24,
       y: mousePosition.y - 24,
       scale: 2,
-      backgroundColor: "rgba(17, 24, 39, 0.7)", // Dark gray/midnight color
+      backgroundColor: "rgba(17, 24, 39, 0.7)",
       mixBlendMode: "difference",
       transition: {
         type: "spring",
@@ -49,7 +49,20 @@ export default function AnimatedCursor() {
   };
 
   useEffect(() => {
-    const textElements = document.querySelectorAll("a, button, h1, h2, h3, p, span");
+    // Enhanced selector to catch all interactive elements
+    const textElements = document.querySelectorAll(`
+      a, 
+      button, 
+      h1, h2, h3, h4, h5, 
+      p, 
+      span, 
+      .skill-item,
+      .experience-item,
+      [role="button"],
+      input,
+      textarea,
+      .interactive-element
+    `);
     
     const mouseEnter = () => setCursorVariant("text");
     const mouseLeave = () => setCursorVariant("default");
@@ -59,19 +72,40 @@ export default function AnimatedCursor() {
       element.addEventListener("mouseleave", mouseLeave);
     });
 
+    // Mutation Observer to handle dynamically added elements
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          mutation.addedNodes.forEach((node) => {
+            if (node instanceof HTMLElement) {
+              if (node.matches('a, button, h1, h2, h3, h4, h5, p, span, .skill-item, .experience-item, [role="button"], input, textarea, .interactive-element')) {
+                node.addEventListener("mouseenter", mouseEnter);
+                node.addEventListener("mouseleave", mouseLeave);
+              }
+            }
+          });
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
     return () => {
       textElements.forEach(element => {
         element.removeEventListener("mouseenter", mouseEnter);
         element.removeEventListener("mouseleave", mouseLeave);
       });
+      observer.disconnect();
     };
   }, []);
 
   return (
     <>
-      {/* Outer ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] mix-blend-difference"
         style={{
           background: 'linear-gradient(45deg, #00ff87, #60efff)',
           boxShadow: '0 0 20px rgba(96, 239, 255, 0.3)',
@@ -80,9 +114,8 @@ export default function AnimatedCursor() {
         animate={cursorVariant}
       />
       
-      {/* Inner dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-50"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999]"
         style={{
           background: 'linear-gradient(45deg, #60efff, #00ff87)',
           boxShadow: '0 0 10px rgba(96, 239, 255, 0.5)',

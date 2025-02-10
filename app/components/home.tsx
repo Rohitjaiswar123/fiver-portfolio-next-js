@@ -88,7 +88,6 @@ export default function Home() {
               </a>
             </motion.div>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -99,10 +98,18 @@ export default function Home() {
               (skill) => (
                 <span
                   key={skill}
-                  className="px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white 
-                             text-sm md:text-base font-medium hover:bg-white/20 transition-colors"
+                  className="relative px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white 
+                              text-sm md:text-base font-medium hover:bg-white/20 transition-colors
+                              border border-emerald-500 group overflow-hidden"
                 >
-                  {skill}
+                  <span className="relative z-10">{skill}</span>
+                  <motion.div
+                    className="absolute inset-0 border-2 border-emerald-500 rounded-full"
+                    animate={{
+                      background: ["linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.2), transparent)"],
+                      x: ["-200%", "200%"],
+                    }}
+                  />
                 </span>
               )
             )}
