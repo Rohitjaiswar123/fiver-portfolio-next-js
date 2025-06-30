@@ -13,7 +13,7 @@ export default function Projects() {
     {
       title: 'E-Commerce Platform',
       description: 'A full-featured online shopping platform with real-time inventory management.',
-      image: '/projects/ecommerce.jpg',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
       tech: ['React', 'Next.js', 'TypeScript', 'Node.js'],
       demo: 'https://demo.example.com',
       github: 'https://github.com/example/project',
@@ -21,7 +21,7 @@ export default function Projects() {
     {
       title: 'AI Chat Application',
       description: 'Real-time chat application with AI-powered response suggestions.',
-      image: '/projects/chat.jpg',
+      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
       tech: ['Python', 'AWS', 'TensorFlow', 'MongoDB'],
       demo: 'https://demo.example.com',
       github: 'https://github.com/example/project',
@@ -29,7 +29,7 @@ export default function Projects() {
     {
       title: 'Portfolio Website',
       description: 'Modern portfolio website with dark theme and smooth animations.',
-      image: '/projects/portfolio.jpg',
+      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop',
       tech: ['Next.js', 'TypeScript', 'Tailwind CSS', ],
       demo: 'https://demo.example.com',
       github: 'https://github.com/Rohitjaiswar123/fiver-portfolio-next-js',
