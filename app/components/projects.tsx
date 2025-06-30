@@ -11,6 +11,14 @@ export default function Projects() {
 
   const projects = [
     {
+      title: 'Real-Time Ambulance Dispatch System',
+      description: 'Built a comprehensive emergency response web application with real-time accident reporting, intelligent ambulance dispatch with Google Maps, and role-based dashboards featuring live notifications and automated hospital alerts.',
+      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop',
+      tech: ['Next.js 15', 'React 18', 'TypeScript', 'Firebase', 'Tailwind CSS', 'Google Maps API'],
+      demo: 'https://ambulance-dispatch-latest.vercel.app/',
+      github: 'https://github.com/example/ambulance-dispatch',
+    },
+    {
       title: 'E-Commerce Platform',
       description: 'A full-featured online shopping platform with real-time inventory management.',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
@@ -18,14 +26,14 @@ export default function Projects() {
       demo: 'https://demo.example.com',
       github: 'https://github.com/example/project',
     },
-    {
-      title: 'AI Chat Application',
-      description: 'Real-time chat application with AI-powered response suggestions.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
-      tech: ['Python', 'AWS', 'TensorFlow', 'MongoDB'],
-      demo: 'https://demo.example.com',
-      github: 'https://github.com/example/project',
-    },
+    // {
+    //   title: 'AI Chat Application',
+    //   description: 'Real-time chat application with AI-powered response suggestions.',
+    //   image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
+    //   tech: ['Python', 'AWS', 'TensorFlow', 'MongoDB'],
+    //   demo: 'https://demo.example.com',
+    //   github: 'https://github.com/example/project',
+    // },
     {
       title: 'Portfolio Website',
       description: 'Modern portfolio website with dark theme and smooth animations.',
