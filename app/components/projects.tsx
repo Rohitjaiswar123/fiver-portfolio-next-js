@@ -20,9 +20,9 @@ export default function Projects() {
     },
     {
       title: 'E-Commerce Platform',
-      description: 'A full-featured online shopping platform with real-time inventory management.',
+      description: 'A comprehensive online shopping platform built with modern React ecosystem, featuring real-time inventory management, secure payment processing, and responsive design using Tailwind CSS with MongoDB for data persistence.',
       image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-      tech: ['React', 'Next.js', 'TypeScript', 'Node.js'],
+      tech: ['React', 'Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS'],
       demo: 'https://demo.example.com',
       github: 'https://github.com/example/project',
     },
@@ -36,9 +36,9 @@ export default function Projects() {
     // },
     {
       title: 'Portfolio Website',
-      description: 'Modern portfolio website with dark theme and smooth animations.',
+      description: 'Modern portfolio website featuring dark theme, smooth animations with Framer Motion, responsive design using Tailwind CSS, and interactive elements. Built with Next.js 15 and TypeScript for optimal performance.',
       image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop',
-      tech: ['Next.js', 'TypeScript', 'Tailwind CSS', ],
+      tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'React 19'],
       demo: 'https://demo.example.com',
       github: 'https://github.com/Rohitjaiswar123/fiver-portfolio-next-js',
     },

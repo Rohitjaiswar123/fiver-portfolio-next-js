@@ -24,9 +24,14 @@ body {
   cursor: none;
 }
 
-/* Optional: Show default cursor for mobile devices */
-@media (max-width: 768px) {
+/* Show default cursor for mobile devices and small screens */
+@media (max-width: 568px) {
   body {
-    cursor: auto;
+    cursor: auto !important;
+  }
+  
+  /* Hide animated cursor on small screens */
+  .animated-cursor {
+    display: none !important;
   }
 }

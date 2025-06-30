@@ -82,7 +82,7 @@ export default function About() {
             initial={{ opacity: 0, x: 100 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
             transition={{ duration: 0.8, type: 'spring', bounce: 0.4 }}
-            className="space-y-6"
+            className="space-y-6 about-content"
           >
             {/* <h3 className="text-2xl font-semibold text-white">Hi, I'm Rohit Jaiswar</h3> */}
             <p className="text-gray-300 text-lg leading-relaxed">
@@ -90,11 +90,11 @@ export default function About() {
             </p>
 
             {/* Skills Section */}
-            <div className="space-y-4">
+            <div className="space-y-4 skills-section">
               <h4 className="text-xl font-semibold text-white">Technical Skills</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {skills.map((skill, index) => (
-                  <div key={index} className="flex items-center space-x-4">
+                  <div key={index} className="flex items-center space-x-4 skill-item">
                     {skill.icon}
                     <div className="flex-1">
                       <div className="flex justify-between">
@@ -114,7 +114,7 @@ export default function About() {
             </div>
 
             {/* Experience Section */}
-            <div className="space-y-4">
+            <div className="space-y-4 experience-section">
               <h4 className="text-xl font-semibold text-white">Experience</h4>
               <div className="space-y-4">
                 {experiences.map((exp, index) => (
@@ -123,7 +123,7 @@ export default function About() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 + index * 0.1 }}
-                    className="border-l-2 border-emerald-500 pl-4"
+                    className="border-l-2 border-emerald-500 pl-4 experience-item"
                   >
                     <h5 className="font-medium text-white">{exp.title}</h5>
                     <p className="text-emerald-400">{exp.company}</p>

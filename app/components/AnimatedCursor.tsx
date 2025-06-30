@@ -6,8 +6,14 @@ import { useEffect, useState } from "react";
 export default function AnimatedCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant, setCursorVariant] = useState("default");
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    // Check if screen is small (568px or less)
+    const checkScreenSize = () => {
+      setIsVisible(window.innerWidth > 568);
+    };
+
     const mouseMove = (e: MouseEvent) => {
       setMousePosition({
         x: e.clientX,
@@ -15,10 +21,15 @@ export default function AnimatedCursor() {
       });
     };
 
+    // Initial check
+    checkScreenSize();
+
     window.addEventListener("mousemove", mouseMove);
+    window.addEventListener("resize", checkScreenSize);
 
     return () => {
       window.removeEventListener("mousemove", mouseMove);
+      window.removeEventListener("resize", checkScreenSize);
     };
   }, []);
 
@@ -49,7 +60,7 @@ export default function AnimatedCursor() {
   };
 
   useEffect(() => {
-    // Enhanced selector to catch all interactive elements
+    // Enhanced selector to catch all interactive elements including about page elements
     const textElements = document.querySelectorAll(`
       a, 
       button, 
@@ -61,7 +72,14 @@ export default function AnimatedCursor() {
       [role="button"],
       input,
       textarea,
-      .interactive-element
+      .interactive-element,
+      nav a,
+      .nav-link,
+      .dropdown-item,
+      .mobile-menu a,
+      .about-content *,
+      .skills-section *,
+      .experience-section *
     `);
     
     const mouseEnter = () => setCursorVariant("text");
@@ -78,7 +96,7 @@ export default function AnimatedCursor() {
         if (mutation.addedNodes.length) {
           mutation.addedNodes.forEach((node) => {
             if (node instanceof HTMLElement) {
-              if (node.matches('a, button, h1, h2, h3, h4, h5, p, span, .skill-item, .experience-item, [role="button"], input, textarea, .interactive-element')) {
+              if (node.matches('a, button, h1, h2, h3, h4, h5, p, span, .skill-item, .experience-item, [role="button"], input, textarea, .interactive-element, nav a, .nav-link, .dropdown-item, .mobile-menu a, .about-content *, .skills-section *, .experience-section *')) {
                 node.addEventListener("mouseenter", mouseEnter);
                 node.addEventListener("mouseleave", mouseLeave);
               }
@@ -102,10 +120,15 @@ export default function AnimatedCursor() {
     };
   }, []);
 
+  // Don't render cursor on small screens
+  if (!isVisible) {
+    return null;
+  }
+
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] mix-blend-difference animated-cursor"
         style={{
           background: 'linear-gradient(45deg, #00ff87, #60efff)',
           boxShadow: '0 0 20px rgba(96, 239, 255, 0.3)',
@@ -115,7 +138,7 @@ export default function AnimatedCursor() {
       />
       
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999] animated-cursor"
         style={{
           background: 'linear-gradient(45deg, #60efff, #00ff87)',
           boxShadow: '0 0 10px rgba(96, 239, 255, 0.5)',
