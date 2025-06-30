@@ -56,7 +56,7 @@ export default function Home() {
             className="space-y-8"
           >
             <h2 className="text-5xl md:text-7xl font-extrabold text-white leading-tight">
-              Hi, I'm <span className="text-emerald-400">Rohit Jaiswar</span>
+              Hi, I&apos;m <span className="text-emerald-400">Rohit Jaiswar</span>
             </h2>
             <h3 className="text-2xl md:text-3xl text-emerald-300 font-semibold">
               Full Stack Developer & Creative Technologist
@@ -64,7 +64,7 @@ export default function Home() {
             <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
               I specialize in building scalable, user-focused web applications
               using modern technologies like React, Node.js, and cloud solutions.
-              Let's work together to transform your vision into reality.
+              Let&apos;s work together to transform your vision into reality.
             </p>
             <motion.div
               initial={{ opacity: 0 }}

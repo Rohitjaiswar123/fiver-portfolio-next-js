@@ -60,7 +60,7 @@ export default function Contact() {
       } else {
         throw new Error('Failed to send message')
       }
-    } catch (error) {
+    } catch {
       alert('Error sending message. Please try again.')
     }
   }

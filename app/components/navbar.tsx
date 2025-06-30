@@ -9,7 +9,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [time, setTime] = useState('')
   const [temperature, setTemperature] = useState<number | null>(null)
-  const [isMobile, setIsMobile] = useState(false)
+
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
@@ -20,11 +20,7 @@ export default function Navbar() {
     }
     window.addEventListener('scroll', handleScroll)
 
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768)
-    }
-    window.addEventListener('resize', handleResize)
-    handleResize()
+
 
     // Time update
     const timer = setInterval(() => {
@@ -45,7 +41,6 @@ export default function Navbar() {
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleResize)
       clearInterval(timer)
     }
   }, [])
