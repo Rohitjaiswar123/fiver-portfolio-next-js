@@ -21,16 +21,16 @@ export default function About() {
   ]
 
   const experiences = [
-    {
-      title: 'Senior Full Stack Developer',
-      company: 'Tech Company',
-      period: '2022 - Present',
-      description: 'Leading development of scalable web applications using modern technologies.',
-    },
+    // {
+    //   title: 'Senior Full Stack Developer',
+    //   company: 'Tech Company',
+    //   period: '2022 - Present',
+    //   description: 'Leading development of scalable web applications using modern technologies.',
+    // },
     {
       title: 'Full Stack Developer',
-      company: 'Digital Agency',
-      period: '2020 - 2022',
+      company: 'Career Man Power Service',
+      period: '2024 - 2025',
       description: 'Built and maintained multiple client projects using React and Node.js.',
     },
   ]
@@ -86,7 +86,7 @@ export default function About() {
           >
             {/* <h3 className="text-2xl font-semibold text-white">Hi, I'm Rohit Jaiswar</h3> */}
             <p className="text-gray-300 text-lg leading-relaxed">
-              A passionate Full Stack Developer with over 6 months of experience in building digital solutions. I specialize in creating responsive and scalable web applications using modern technologies. My approach combines technical expertise with creative problem-solving to deliver exceptional user experiences.
+              A passionate Full Stack Developer with over 1 year of experience in building digital solutions. I specialize in creating responsive and scalable web applications using modern technologies. My approach combines technical expertise with creative problem-solving to deliver exceptional user experiences.
             </p>
 
             {/* Skills Section */}

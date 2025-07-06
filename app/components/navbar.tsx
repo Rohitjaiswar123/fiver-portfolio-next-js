@@ -30,7 +30,7 @@ export default function Navbar() {
     // Temperature fetch
     const fetchTemperature = async () => {
       try {
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=19.0760&lon=72.8777&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&units=metric`)
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=19.0760&lon=72.8777&appid=${process.env.WEATHER_API_KEY}&units=metric`)
         const data = await res.json()
         setTemperature(data.main.temp)
       } catch (error) {

@@ -6,6 +6,7 @@ export async function POST(req: Request) {
     const { name, email, message } = await req.json();
     
     if (!process.env.RESEND_API_KEY) {
+      console.log('RESEND_API_KEY missing in production');
       return NextResponse.json({ error: 'Email service not configured' }, { status: 500 });
     }
     
