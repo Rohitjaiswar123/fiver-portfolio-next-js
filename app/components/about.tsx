@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
-import { FaReact, FaNodeJs,  FaAws, FaDocker } from 'react-icons/fa'
+import { FaReact, FaNodeJs, FaAws, FaDocker } from 'react-icons/fa'
 import { SiTailwindcss, SiPostgresql, SiMongodb } from 'react-icons/si'
 
 export default function About() {
@@ -18,6 +18,20 @@ export default function About() {
     { icon: <SiPostgresql size={20} className="text-blue-500" />, name: 'PostgreSQL', level: 75 },
     { icon: <FaAws size={20} className="text-yellow-500" />, name: 'AWS', level: 60 },
     { icon: <FaDocker size={20} className="text-blue-400" />, name: 'Docker', level: 65 },
+    {
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-6 h-6 text-gray-400"
+        >
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 5.373 3.438 9.938 8.188 11.625.6.113.813-.263.813-.588 0-.288-.013-1.25-.013-2.275-3.338.725-4.038-1.613-4.038-1.613-.55-1.4-1.338-1.775-1.338-1.775-1.088-.75.088-.738.088-.738 1.2.088 1.838 1.238 1.838 1.238 1.075 1.838 2.825 1.3 3.513.988.113-.775.425-1.3.775-1.6-2.663-.3-5.463-1.338-5.463-5.963 0-1.313.475-2.388 1.238-3.238-.125-.3-.538-1.513.113-3.163 0 0 1.013-.325 3.313 1.238.963-.263 2-.388 3.038-.388 1.038 0 2.075.125 3.038.388 2.3-1.563 3.313-1.238 3.313-1.238.65 1.65.238 2.863.113 3.163.763.85 1.238 1.925 1.238 3.238 0 4.638-2.8 5.663-5.463 5.963.438.375.825 1.125.825 2.275 0 1.65-.013 2.975-.013 3.375 0 .325.213.7.825.588C20.563 21.938 24 17.373 24 12c0-6.627-5.373-12-12-12z" />
+        </svg>
+      ),
+      name: 'Next.js',
+      level: 85,
+    },
   ]
 
   const experiences = [
