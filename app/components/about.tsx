@@ -43,8 +43,8 @@ export default function About() {
     // },
     {
       title: 'Full Stack Developer',
-      company: 'Career Man Power Service',
-      period: '2024 - 2025',
+      company: 'Code studio',
+      period: '2023 - 2024',
       description: 'Built and maintained multiple client projects using React and Node.js.',
     },
   ]
