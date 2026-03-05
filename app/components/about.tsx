@@ -43,16 +43,16 @@ export default function About() {
     // },
     {
       title: 'Full Stack Developer',
-      company: 'Code studio',
-      period: '2023 - 2024',
-      description: 'Built and maintained multiple client projects using React and Node.js.',
+      company: 'Freelanced',
+      period: '2025 - Present',
+      description: 'Built and maintained multiple client projects using Next.js, firebase and Node.js.',
     },
   ]
 
   return (
     <section ref={sectionRef} id="about" className="relative py-20 bg-gradient-to-br from-zinc-900 via-zinc-800 to-emerald-800/40 overflow-hidden">
       {/* Decorative Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-gradient-to-br from-zinc-300/10 via-emerald-500/10 to-transparent transform rotate-45 motion-safe:animate-pulse opacity-20 pointer-events-none"></div>
       </div>
 
@@ -146,6 +146,26 @@ export default function About() {
                   </motion.div>
                 ))}
               </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.5 }}
+                className="pt-6"
+              >
+                <a
+                  href="https://docs.google.com/document/d/1EaMVKBCvyE22UxJvif3HAhcBg9d2PT2Fk2BoFiiAOrc/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-600 transition-all hover:scale-105 shadow-lg shadow-emerald-500/20"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.644C3.67 8.501 7.534 6 12 6s8.33 2.501 10.036 5.678c.408.816.408 1.838 0 2.654C20.33 17.499 16.466 20 12 20s-8.33-2.501-10.036-5.678Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  </svg>
+                  View Resume
+                </a>
+              </motion.div>
             </div>
           </motion.div>
         </div>

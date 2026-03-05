@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useState, useRef } from 'react'
-import { FaGithub, FaGitlab, FaLinkedin } from 'react-icons/fa'
+import { FaGithub, FaGitlab, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 import { SiUpwork } from 'react-icons/si'
 
 export default function Contact() {
@@ -11,7 +11,7 @@ export default function Contact() {
     email: '',
     message: ''
   })
-  
+
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
@@ -22,14 +22,14 @@ export default function Contact() {
       url: 'https://www.linkedin.com/in/rohit-jaiswar-313a60230/'
     },
     {
-      name: 'GitHub', 
+      name: 'GitHub',
       icon: <FaGithub className="w-6 h-6" />,
       url: 'https://github.com/Rohitjaiswar123'
     },
     {
-      name: 'Upwork',
-      icon: <SiUpwork className="w-6 h-6" />,
-      url: 'https://upwork.com/yourprofile'
+      name: 'Whatsapp',
+      icon: <FaWhatsapp className="w-6 h-6" />,
+      url: 'https://wa.me/918286996458'
     },
     {
       name: 'GitLab',
@@ -39,7 +39,7 @@ export default function Contact() {
   ]
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     try {
       const response = await fetch('/api/send', {
         method: 'POST',
@@ -160,7 +160,7 @@ export default function Contact() {
             transition={{ duration: 4.8, delay: 0.4, type: "spring", bounce: 0.3, damping: 20 }}
             className="space-y-8"
           >
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 100 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
               transition={{ duration: 4.8, delay: 0.6, type: "spring", bounce: 0.3, damping: 20 }}

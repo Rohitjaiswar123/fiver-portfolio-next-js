@@ -11,37 +11,29 @@ export default function Projects() {
 
   const projects = [
     {
-      title: 'Real-Time Ambulance Dispatch System',
+      title: 'Real-Time Ambulance Dispatch System (completed)',
       description: 'Built a comprehensive emergency response web application with real-time accident reporting, intelligent ambulance dispatch with Google Maps, and role-based dashboards featuring live notifications and automated hospital alerts.',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop',
+      image: '/rakshak.png',
       tech: ['Next.js 15', 'React 18', 'TypeScript', 'Firebase', 'Tailwind CSS', 'Google Maps API'],
       demo: 'https://ambulance-dispatch-latest.vercel.app/',
       github: 'https://github.com/Rohitjaiswar123/ambulance-dispatch-latest',
     },
     {
-      title: 'E-Commerce Platform - Currently working on it',
-      description: 'A comprehensive online shopping platform built with modern React ecosystem, featuring real-time inventory management, secure payment processing, and responsive design using Tailwind CSS with MongoDB for data persistence.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-      tech: ['React', 'Next.js', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS'],
-      demo: 'https://demo.example.com',
-      github: 'https://github.com/example/project',
+      title: 'ClockHustle – AI Scope Creep Protection',
+      description: 'An AI-powered platform for freelancers to detect out-of-scope requests and generate upsell suggestions. Built with a modern Next.js ecosystem, it monitors communications via Slack, Email, and Gmail using Google GenAI to turn scope creep into revenue.',
+      image: '/clockhustle.png',
+      tech: ['Next.js 15', 'Firebase', 'Google GenAI', 'Tailwind CSS', 'Razorpay', 'Sentry'],
+      demo: 'https://clockhustle.com',
+      github: 'https://github.com/Rohitjaiswar123/scopeguard',
     },
-    // {
-    //   title: 'AI Chat Application',
-    //   description: 'Real-time chat application with AI-powered response suggestions.',
-    //   image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
-    //   tech: ['Python', 'AWS', 'TensorFlow', 'MongoDB'],
-    //   demo: 'https://demo.example.com',
-    //   github: 'https://github.com/example/project',
-    // },
     {
-      title: 'Portfolio Website',
-      description: 'Modern portfolio website featuring dark theme, smooth animations with Framer Motion, responsive design using Tailwind CSS, and interactive elements. Built with Next.js 15 and TypeScript for optimal performance.',
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop',
-      tech: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'React 19'],
-      demo: 'https://portfolio-next-js-chi-beryl.vercel.app/',
-      github: 'https://github.com/Rohitjaiswar123/fiver-portfolio-next-js',
-    },
+      title: 'Sai Optics – Currently working',
+      description: 'Built a modern, high-performance web platform for a premium optometry chain with multiple strategic locations. Features a cinematic UI with Framer Motion animations, a dynamic store locator, and a responsive design delivering an architectural fusion of precision eye-care and progressive eyewear aesthetics.',
+      image: '/sai.png',
+      tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Radix UI'],
+      demo: 'https://sai-optics.vercel.app/',
+      github: 'https://github.com/Rohitjaiswar123/sai-optics',
+    }
   ]
 
   const allTechnologies = Array.from(new Set(projects.flatMap((project) => project.tech)))
@@ -58,7 +50,7 @@ export default function Projects() {
     >
       {/* Background Animation */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-t from-emerald-600/10 via-transparent to-transparent blur-3xl opacity-30"
+        className="absolute inset-0 bg-gradient-to-t from-emerald-600/10 via-transparent to-transparent blur-3xl opacity-30 pointer-events-none"
         animate={{
           scale: [1, 1.1, 1],
           opacity: [0.7, 0.8, 0.7],
@@ -66,7 +58,7 @@ export default function Projects() {
         transition={{ repeat: Infinity, duration: 8 }}
       ></motion.div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -87,11 +79,10 @@ export default function Projects() {
         >
           <button
             onClick={() => setSelectedTech('all')}
-            className={`px-4 py-2 rounded-full transition-transform transform ${
-              selectedTech === 'all'
-                ? 'bg-emerald-500 text-white shadow-lg scale-105'
-                : 'bg-white/10 text-white hover:bg-white/20'
-            }`}
+            className={`px-4 py-2 rounded-full transition-transform transform ${selectedTech === 'all'
+              ? 'bg-emerald-500 text-white shadow-lg scale-105'
+              : 'bg-white/10 text-white hover:bg-white/20'
+              }`}
           >
             All
           </button>
@@ -99,18 +90,17 @@ export default function Projects() {
             <button
               key={tech}
               onClick={() => setSelectedTech(tech)}
-              className={`px-4 py-2 rounded-full transition-transform transform ${
-                selectedTech === tech
-                  ? 'bg-emerald-500 text-white shadow-lg scale-105'
-                  : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
+              className={`px-4 py-2 rounded-full transition-transform transform ${selectedTech === tech
+                ? 'bg-emerald-500 text-white shadow-lg scale-105'
+                : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
             >
               {tech}
             </button>
           ))}
         </motion.div>
 
-        {/* Projects */}
+        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
           {filteredProjects.map((project, index) => (
             <motion.div
@@ -123,9 +113,9 @@ export default function Projects() {
                 type: 'spring',
                 bounce: 0.4,
               }}
-              className="bg-white/10 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105"
+              className="bg-white/10 backdrop-blur-md rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 flex flex-col h-full"
             >
-              <div className="relative h-48">
+              <div className="relative h-48 w-full shrink-0">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -134,36 +124,39 @@ export default function Projects() {
                   loading="lazy"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 text-sm bg-gradient-to-r from-emerald-500 to-green-400 text-black rounded-full shadow-md"
+                <p className="text-gray-300 mb-4 flex-grow">{project.description}</p>
+
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 text-sm bg-gradient-to-r from-emerald-500 to-green-400 text-black rounded-full shadow-md"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-4">
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-emerald-500 text-white rounded-full hover:bg-emerald-600 transition-transform transform hover:scale-105"
                     >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-4">
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-emerald-500 text-white rounded-full hover:bg-emerald-600 transition-transform transform hover:scale-105"
-                  >
-                    Live Demo
-                  </a>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 border border-white/20 text-white rounded-full hover:bg-white/10 transition-transform transform hover:scale-105"
-                  >
-                    GitHub
-                  </a>
+                      Live Demo
+                    </a>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 border border-white/20 text-white rounded-full hover:bg-white/10 transition-transform transform hover:scale-105"
+                    >
+                      GitHub
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>

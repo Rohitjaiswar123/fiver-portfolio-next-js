@@ -94,7 +94,7 @@ export default function Home() {
             transition={{ delay: 0.4 }}
             className="mt-16 flex flex-wrap justify-center md:justify-start gap-4"
           >
-            {["React", "Next.js", "TypeScript", "Node.js", "AWS", "Java", "SQL", "Python"].map(
+            {["React", "Next.js", "TypeScript", "Node.js", "AWS", "Java", "SQL", "Python", "Firebase", "Razorpay"].map(
               (skill) => (
                 <span
                   key={skill}
