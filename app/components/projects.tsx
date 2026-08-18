@@ -11,12 +11,11 @@ export default function Projects() {
 
   const projects = [
     {
-      title: 'Real-Time Ambulance Dispatch System (completed)',
+      title: 'Crashcall (completed)',
       description: 'Built a comprehensive emergency response web application with real-time accident reporting, intelligent ambulance dispatch with Google Maps, and role-based dashboards featuring live notifications and automated hospital alerts.',
       image: '/rakshak.png',
       tech: ['Next.js 15', 'React 18', 'TypeScript', 'Firebase', 'Tailwind CSS', 'Google Maps API'],
-      demo: 'https://ambulance-dispatch-latest.vercel.app/',
-      github: 'https://github.com/Rohitjaiswar123/ambulance-dispatch-latest',
+      demo: 'https://crashcall.life/',
     },
     {
       title: 'ClockHustle – AI Scope Creep Protection',
@@ -24,7 +23,6 @@ export default function Projects() {
       image: '/clockhustle.png',
       tech: ['Next.js 15', 'Firebase', 'Google GenAI', 'Tailwind CSS', 'Razorpay', 'Sentry'],
       demo: 'https://clockhustle.com',
-      github: 'https://github.com/Rohitjaiswar123/scopeguard',
     },
     {
       title: 'Sai Optics – Currently working',
@@ -148,14 +146,16 @@ export default function Projects() {
                     >
                       Live Demo
                     </a>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 border border-white/20 text-white rounded-full hover:bg-white/10 transition-transform transform hover:scale-105"
-                    >
-                      GitHub
-                    </a>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 border border-white/20 text-white rounded-full hover:bg-white/10 transition-transform transform hover:scale-105"
+                      >
+                        GitHub
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>

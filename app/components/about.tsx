@@ -43,8 +43,8 @@ export default function About() {
     // },
     {
       title: 'Full Stack Developer',
-      company: 'Freelanced',
-      period: '2025 - Present',
+      company: 'Crashcall',
+      period: 'March 2025 - Present',
       description: 'Built and maintained multiple client projects using Next.js, firebase and Node.js.',
     },
   ]
@@ -154,7 +154,7 @@ export default function About() {
                 className="pt-6"
               >
                 <a
-                  href="https://docs.google.com/document/d/1EaMVKBCvyE22UxJvif3HAhcBg9d2PT2Fk2BoFiiAOrc/edit?usp=sharing"
+                  href="https://docs.google.com/document/d/19rzuYxQiB6PVOb7LXRmSe40vpgGk-WLcVEZTiPze0xw/edit?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-600 transition-all hover:scale-105 shadow-lg shadow-emerald-500/20"

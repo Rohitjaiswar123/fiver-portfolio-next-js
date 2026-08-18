@@ -3,7 +3,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useState, useRef } from 'react'
 import { FaGithub, FaGitlab, FaLinkedin, FaWhatsapp } from 'react-icons/fa'
-import { SiUpwork } from 'react-icons/si'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
