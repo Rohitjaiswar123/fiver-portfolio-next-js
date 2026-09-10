@@ -13,7 +13,7 @@ export default function Projects() {
     {
       title: 'Crashcall (completed)',
       description: 'Built a comprehensive emergency response web application with real-time accident reporting, intelligent ambulance dispatch with Google Maps, and role-based dashboards featuring live notifications and automated hospital alerts.',
-      image: '/rakshak.png',
+      image: '/rakshak2.png',
       tech: ['Next.js 15', 'React 18', 'TypeScript', 'Firebase', 'Tailwind CSS', 'Google Maps API'],
       demo: 'https://crashcall.life/',
     },
